@@ -33,11 +33,11 @@
 			<version>2.4.4.Final</version>
 		</dependency>
 		<dependency>
-    <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
-    <artifactId>owasp-java-html-sanitizer</artifactId>
-    <version>20191001.1</version>
-</dependency>
-
+			<groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+			<artifactId>owasp-java-html-sanitizer</artifactId>
+			<version>20191001.1</version>
+		</dependency>
+		
 	</dependencies>
 
 </project>
