@@ -13,25 +13,40 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:messages id="messages" />
-		<p:panelGrid columns="2"
-			style="margin: auto; width: 25%; margin-top: 8em;">
-			<f:facet name="header">Opet Network</f:facet>
+	<center>
+		<h:form>
+			<p:messages id="messages" />
 
-			<p:outputLabel value="Usuário:" />
-			<p:inputText id="nomeUsuario" style="width: 100%;" value="#{LoginBean.usuario.nomeUsuario}" />
 
-			<p:outputLabel value="Senha:" />
-			<p:password id="senha" style="width: 100%;" value="#{LoginBean.usuario.senha}" />
+			<p:panelGrid columns="2" style="width: 25%; margin-top: 6em;">
+				<f:facet name="header">Opet Network</f:facet>
 
-			<f:facet name="footer">
-				<p:commandButton style="min-width: 100%;" ajax="false"
-					value="Entrar" action="#{LoginBean.envia()}"></p:commandButton>
-			</f:facet>
-		</p:panelGrid>
+				<p:outputLabel value="Usuário:" />
+				<p:inputText id="nomeUsuario" style="width: 100%;"
+					value="#{UsuarioBean.usuario.nomeUsuario}" />
 
-	</h:form>
+				<p:outputLabel value="Senha:" />
+				<p:password id="senha" style="width: 100%;"
+					value="#{UsuarioBean.usuario.senha}" />
 
+				<f:facet name="footer">
+					<p:commandButton style="min-width: 100%;" ajax="false"
+						value="Entrar" action="#{UsuarioBean.envia()}"></p:commandButton>
+				</f:facet>
+			</p:panelGrid>
+
+			
+		</h:form>
+		
+		<h:form>
+		
+		<p:panelGrid columns="1">
+				<p:commandButton style="min-width: 50%;" ajax="false"
+					value="Cadastrar Usuario" action="#{UsuarioBean.telaCadastro()}">
+				</p:commandButton>
+			</p:panelGrid>
+		</h:form>
+
+	</center>
 </h:body>
 </html>

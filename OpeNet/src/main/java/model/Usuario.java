@@ -1,6 +1,8 @@
 package model;
 
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 public class Usuario{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name="userName", nullable=false, unique=true)
@@ -21,14 +23,22 @@ public class Usuario{
 	
 	@Column(name="password", nullable=false, unique=false)
 	private String senha;
-	//private String mensagem;
+	
+	@Column(name="curso", unique=false)
+	private String curso;
+	
+	@Column(name="periodo", unique=false)
+	private String periodo;
+	
+	@Column(name="dtNasc", unique=false)
+	private LocalDate dtNasc;
 
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id = null;
 	}
 
 	public String getNomeUsuario() {
@@ -45,6 +55,30 @@ public class Usuario{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	public LocalDate getDtNasc() {
+		return dtNasc;
+	}
+
+	public void setDtNasc(LocalDate dtNasc) {
+		this.dtNasc = dtNasc;
 	}
 
 	
