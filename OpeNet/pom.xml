@@ -43,12 +43,9 @@
 			<artifactId>owasp-java-html-sanitizer</artifactId>
 			<version>20191001.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.4.30.Final</version>
-		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core <dependency> 
+			<groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+			<version>5.4.30.Final</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate.common/hibernate-commons-annotations -->
 		<dependency>
 			<groupId>org.hibernate.common</groupId>
@@ -86,6 +83,19 @@
 			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
 			<version>2.0.0.CR1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>3.5</version>
+		</dependency>
+
 
 
 	</dependencies>

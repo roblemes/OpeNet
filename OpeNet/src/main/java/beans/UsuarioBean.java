@@ -4,14 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.apache.commons.codec.digest.DigestUtils;
 
+import dao.CursoDAO;
 import dao.UsuarioDAO;
+import model.Curso;
 import model.Usuario;
 
 @SuppressWarnings("serial")
@@ -21,35 +24,46 @@ public class UsuarioBean implements Serializable {
 
 	private Usuario usuario;
 	private List<Usuario> usuarios;
+	private List<Curso> cursos;
+	
+	private CursoDAO cursoDAO;
 	
 	private UsuarioDAO usuarioDAO;
 
 	@PostConstruct
 	public void init() {
+		//cursoDAO = new CursoDAO();
 		usuarioDAO = new UsuarioDAO();
 		
 		usuario = new Usuario();
 		usuarios = usuarioDAO.listar();
+		//setCursos(cursoDAO.listar());
 	}
 
 	public void salvar() {
+		//criptografa a senha
+		usuario.setSenha(DigestUtils.md2Hex(usuario.getSenha()));
+		
 		usuarioDAO.salvar(usuario);
+		
+		if (usuario != null) {
+			FacesContext.getCurrentInstance().addMessage(null,
+			new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Cadastro realizado!"));
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+			new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Cadastro não realizado!"));
+			
+		}
 		
 		usuario = new Usuario();
 		usuarios = usuarioDAO.listar();
 		
-		/*
-		 * if (usuario != null) { FacesContext.getCurrentInstance().addMessage(null, new
-		 * FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Cadastro realizado"));
-		 * } else { FacesContext.getCurrentInstance().addMessage(null, new
-		 * FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Cadastro nao realizado"));
-		 * }
-		 */
 	}
 	
 	public String envia() {
 
-		usuario = usuarioDAO.getUsuario(usuario.getNomeUsuario(), usuario.getSenha());
+		usuario = usuarioDAO.getUsuario(usuario.getNomeUsuario(), DigestUtils.md2Hex(usuario.getSenha()));
 		if (usuario != null) {
 			return "login-realizado?faces-redirect=true";
 
@@ -61,7 +75,6 @@ public class UsuarioBean implements Serializable {
 		}
 	}
 
-	
 	public String telaCadastro() {
 		return "cadastrar?faces-redirect=true";
 	}
@@ -97,5 +110,11 @@ public class UsuarioBean implements Serializable {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+	
+	  public List<Curso> getCursos() { return cursos; }
+	  
+	  public void setCursos(List<Curso> cursos) { this.cursos = cursos; }
+	 
 
 }

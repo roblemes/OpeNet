@@ -13,76 +13,88 @@
 </h:head>
 
 <h:body>
-<center>
-<h:form>
-<p:panelGrid columns="1">
-<p:commandButton style="min-width: 50%;" ajax="false"
-					value="Voltar" action="index.xhtml?faces-redirect=true">
-</p:commandButton>
-</p:panelGrid>
-</h:form>
+	<center>
 
-<h:form>
-		<p:panelGrid columns="2" id="painelDados"
-			style="width: 25%; margin-top: 3em;">
-			<f:facet name="header">Cadastrar Usuario</f:facet>
 
-			<p:outputLabel value="Nome:" />
-			<p:inputText id="nomeUsuarioC" style="width: 100%;"
-				value="#{UsuarioBean.usuario.nomeUsuario}" required="true"
-				requiredMessage="O campo nome é obrigatório" />
+		<h:form>
+			<p:messages id="messages" closable="true"/>
+			
+			<p:panelGrid columns="2" id="painelDados"
+				style="width: 30%; margin-top: 3em;">
+				<f:facet name="header">Cadastrar Usuário</f:facet>
 
-			<p:outputLabel value="Senha:" />
-			<p:password id="senhaC" style="width: 100%;"
-				value="#{UsuarioBean.usuario.senha}" required="true"
-				requiredMessage="O campo senha é obrigatório" />
+				<p:outputLabel value="Nome:" />
+				<p:inputText id="nomeUsuarioC" style="width: 100%;"
+					value="#{UsuarioBean.usuario.nomeUsuario}" required="true"
+					requiredMessage="O campo nome é obrigatório" />
 
-			<p:outputLabel value="Data de nascimento:" />
-			<p:calendar pattern="dd/MM/yyyy" id="dtNasc" style="width: 100%;"
-				value="#{UsuarioBean.usuario.dtNasc}" required="true"
-				requiredMessage="O campo data é obrigatório" />
+				<p:outputLabel value="Senha:" />
+				<p:password id="senhaC" style="width: 100%;"
+					value="#{UsuarioBean.usuario.senha}" required="true"
+					requiredMessage="O campo senha é obrigatório" />
 
-			<p:outputLabel value="Curso:" />
-			<p:inputText id="curso" style="width: 100%;"
-				value="#{UsuarioBean.usuario.curso}" required="true"
-				requiredMessage="O campo curso é obrigatório" />
+				<p:outputLabel value="Data de nascimento:" />
+				<p:calendar pattern="dd/MM/yyyy" id="dtNasc" style="width: 100%;"
+					value="#{UsuarioBean.usuario.dtNasc}" required="true"
+					requiredMessage="O campo data é obrigatório" />
 
-			<p:outputLabel value="Período:" />
-			<p:inputText id="periodo" style="width: 100%;"
-				value="#{UsuarioBean.usuario.periodo}" required="true"
-				requiredMessage="O campo periodo é obrigatório" />
+				<p:outputLabel value="Curso:" />
+				<p:selectOneMenu required="true"
+					requiredMessage="O campo curso é obrigatório"
+					value="#{UsuarioBean.usuario.curso}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Selecione um curso" />
+					<f:selectItems value="#{CursoBean.cursos}" var="c"
+						itemLabel="#{c.nomeCurso}" />
+				</p:selectOneMenu>
 
-			<f:facet name="footer">
-				<p:commandButton style="min-width: 100%;" ajax="true"
-					value="Cadastrar" actionListener="#{UsuarioBean.salvar}"
-					update="tabela">
+				<p:outputLabel value="Período:" />
+				<p:inputText id="periodo" style="width: 100%;"
+					value="#{UsuarioBean.usuario.periodo}" required="true"
+					requiredMessage="O campo periodo é obrigatório" />
+
+				<f:facet name="footer">
+					<p:commandButton style="min-width: 100%;" ajax="false"
+						value="Cadastrar" actionListener="#{UsuarioBean.salvar}"
+						update="painelDados tabela">
+					</p:commandButton>
+
+				</f:facet>
+			</p:panelGrid>
+
+		</h:form>
+		<h:form>
+			<p:panelGrid columns="1" style="margin-top:1rem;min-width: 30%;">
+				<p:commandButton
+					style="min-width: 100%;background-color:#626262; border-color:#626262;"
+					ajax="false" value="Voltar"
+					action="index.xhtml?faces-redirect=true">
 				</p:commandButton>
-			</f:facet>
-		</p:panelGrid>
-		
+			</p:panelGrid>
+		</h:form>
+
 		<p:separator style="margin-top: 3em;" />
+		<h:form>
+			<p:dataTable style="margin: auto; width: 70%;" id="tabela"
+				emptyMessage="Nenhum registro encontrado" paginator="true"
+				value="#{UsuarioBean.usuarios}" var="u">
 
-		<p:dataTable style="margin: auto; width: 70%;" id="tabela"
-			emptyMessage="Nenhum registro" paginator="true"
-			value="#{UsuarioBean.usuarios}" var="u">
+				<p:column headerText="Nome">
+					<h:outputText value="#{u.nomeUsuario}" />
+					<!-- 			#{cursor.nome} -->
+				</p:column>
+				<p:column headerText="Curso">
+					<h:outputText value="#{u.curso.nomeCurso}" />
+				</p:column>
+				<p:column headerText="Periodo">
+					<h:outputText value="#{u.periodo}" />
+				</p:column>
+				<p:column headerText="Data de nascimento">
+					<h:outputText value="#{u.dtNasc}" />
+				</p:column>
+			</p:dataTable>
 
-			<p:column headerText="Nome">
-				<h:outputText value="#{u.nomeUsuario}" />
-				<!-- 			#{cursor.nome} -->
-			</p:column>
-			<p:column headerText="Curso">
-				<h:outputText value="#{u.curso}" />
-			</p:column>
-			<p:column headerText="Periodo">
-				<h:outputText value="#{u.periodo}" />
-			</p:column>
-			<p:column headerText="Data de nascimento">
-				<h:outputText value="#{u.dtNasc}" />
-			</p:column>
-		</p:dataTable>
-
-	</h:form>
-
-</center>
+		</h:form>
+	</center>
 </h:body>
 </html>

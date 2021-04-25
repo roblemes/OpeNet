@@ -15,7 +15,7 @@
 <h:body>
 	<center>
 		<h:form>
-			<p:messages id="messages" />
+			<p:messages id="messages" closable="true" showDetail="true"/>
 
 
 			<p:panelGrid columns="2" style="width: 25%; margin-top: 6em;">
@@ -40,8 +40,8 @@
 		
 		<h:form>
 		
-		<p:panelGrid columns="1">
-				<p:commandButton style="min-width: 50%;" ajax="false"
+		<p:panelGrid columns="1" style="margin-top:1rem;min-width: 25%;">
+				<p:commandButton style="min-width: 100%;" ajax="false"
 					value="Cadastrar Usuario" action="#{UsuarioBean.telaCadastro()}">
 				</p:commandButton>
 			</p:panelGrid>

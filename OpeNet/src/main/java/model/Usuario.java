@@ -8,11 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "usuario")
 public class Usuario{
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,8 +28,9 @@ public class Usuario{
 	@Column(name="password", nullable=false, unique=false)
 	private String senha;
 	
-	@Column(name="curso", unique=false)
-	private String curso;
+	@ManyToOne
+	@JoinColumn(name="curso", nullable=false)
+	private Curso curso = new Curso();
 	
 	@Column(name="periodo", unique=false)
 	private String periodo;
@@ -57,14 +62,6 @@ public class Usuario{
 		this.senha = senha;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
 	public String getPeriodo() {
 		return periodo;
 	}
@@ -81,6 +78,13 @@ public class Usuario{
 		this.dtNasc = dtNasc;
 	}
 
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 	
 	
 	/*
