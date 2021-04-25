@@ -1,4 +1,4 @@
-package beans;
+package br.com.openet.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,10 +12,10 @@ import javax.inject.Named;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import dao.CursoDAO;
-import dao.UsuarioDAO;
-import model.Curso;
-import model.Usuario;
+import br.com.openet.dao.CursoDAO;
+import br.com.openet.dao.UsuarioDAO;
+import br.com.openet.model.Curso;
+import br.com.openet.model.Usuario;
 
 @SuppressWarnings("serial")
 @Named("UsuarioBean")
@@ -26,16 +26,14 @@ public class UsuarioBean implements Serializable {
 	private List<Usuario> usuarios;
 	private List<Curso> cursos;
 	
-	private CursoDAO cursoDAO;
-	
 	private UsuarioDAO usuarioDAO;
 
 	@PostConstruct
 	public void init() {
 		//cursoDAO = new CursoDAO();
 		usuarioDAO = new UsuarioDAO();
-		
 		usuario = new Usuario();
+		
 		usuarios = usuarioDAO.listar();
 		//setCursos(cursoDAO.listar());
 	}

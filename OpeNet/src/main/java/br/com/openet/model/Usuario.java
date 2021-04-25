@@ -1,4 +1,4 @@
-package model;
+package br.com.openet.model;
 
 
 import java.time.LocalDate;
@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario{
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

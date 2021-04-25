@@ -1,4 +1,4 @@
-package beans;
+package br.com.openet.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,8 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import dao.CursoDAO;
-import model.Curso;
+import br.com.openet.dao.CursoDAO;
+import br.com.openet.model.Curso;
 
 @SuppressWarnings("serial")
 @Named("CursoBean")
@@ -23,8 +23,8 @@ public class CursoBean implements Serializable{
 	@PostConstruct
 	public void init() {
 		cursoDAO = new CursoDAO();
-		
 		curso = new Curso();
+		
 		cursos = cursoDAO.listar();
 	}
 	

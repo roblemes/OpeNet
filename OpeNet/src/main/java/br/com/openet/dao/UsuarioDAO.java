@@ -1,4 +1,4 @@
-package dao;
+package br.com.openet.dao;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-
-import model.Usuario;
-import util.JPAUtil;
+import br.com.openet.model.Usuario;
+import br.com.openet.util.JPAUtil;
 
 public class UsuarioDAO {
 

@@ -1,4 +1,4 @@
-package dao;
+package br.com.openet.dao;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import model.Curso;
-import util.JPAUtil;
+import br.com.openet.model.Curso;
+import br.com.openet.util.JPAUtil;
 
 public class CursoDAO {
 

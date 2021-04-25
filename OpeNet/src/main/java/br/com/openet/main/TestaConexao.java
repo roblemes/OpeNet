@@ -1,8 +1,8 @@
-package main;
+package br.com.openet.main;
 
 import javax.persistence.EntityManager;
 
-import util.JPAUtil;
+import br.com.openet.util.JPAUtil;
 
 public class TestaConexao {
 	public static void main(String[] args) {
